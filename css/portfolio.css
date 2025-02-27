@@ -1,0 +1,324 @@
+/* --- Existing Variables & Global Styles --- */
+:root {
+    --primary-color: #4c00ff;
+    --secondary-color: #222;
+    --light-bg: #f4f4f4;
+    --dark-bg: #121212;
+    --text-color: #333;
+    --light-text: #fff;
+    --transition-speed: 0.3s;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    /* Using Orbitron for a unique look; you can change to Roboto for content if desired */
+    font-family: "Orbitron", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+    background: var(--light-bg);
+  }
+  
+  body.dark-mode {
+    background: var(--dark-bg);
+    color: var(--light-text);
+  }
+  
+  /* Utility Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* --- Navigation Styles --- */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: var(--light-bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background var(--transition-speed) ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  body.dark-mode .navbar {
+    background: var(--secondary-color);
+  }
+  
+  /* Logo */
+  .logo svg {
+    height: 50px;
+    width: auto;
+  }
+  
+  .logo-text {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 2.5;
+    stroke-dasharray: 400 50;
+    font-size: 60px;
+    font-family: 'Orbitron', sans-serif;
+    filter: drop-shadow(0 0 8px var(--primary-color)) drop-shadow(0 0 16px var(--primary-color)) drop-shadow(0 0 32px var(--primary-color));
+    animation: dash 3s linear infinite;
+  }
+  
+  @keyframes dash {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: -450; }
+  }
+  
+  /* Dark Mode Toggle */
+  .toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 26px;
+  }
+  
+  .toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .toggle-label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #ddd;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: background var(--transition-speed) ease;
+  }
+  
+  .toggle-label::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform var(--transition-speed) ease;
+  }
+  
+  .toggle-input:checked + .toggle-label {
+    background: var(--primary-color);
+  }
+  
+  .toggle-input:checked + .toggle-label::before {
+    transform: translateX(24px);
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-links li {
+    margin: 0 15px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color var(--transition-speed) ease;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a:focus {
+    color: var(--primary-color);
+  }
+  
+  body.dark-mode .nav-links a {
+    color: var(--light-text);
+  }
+  
+  /* Mobile Navigation Toggle */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    margin: 5px 0;
+    transition: background var(--transition-speed) ease;
+  }
+  
+  body.dark-mode .hamburger {
+    background: var(--light-text);
+  }
+  
+  /* --- Section Styles --- */
+  /* Add top padding so sections appear below fixed navbar */
+  .section {
+    padding: 120px 20px 80px;
+    /* Smooth fade transition for tabs */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: none;
+    /* Optional: ensure each section is at least the height of the viewport minus navbar */
+    min-height: calc(100vh - 80px);
+  }
+  
+  /* Show active section */
+  .section.active {
+    display: block;
+    opacity: 1;
+  }
+  
+  /* Hero Section */
+  .hero {
+    position: relative;
+    background: url('hero-bg.jpg') center/cover no-repeat;
+    height: 100vh;
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 20px;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+  }
+  
+  /* --- Experience Cards (unchanged from previous code) --- */
+  /* (Keep your flip-card styles as defined previously; they remain the same.) */
+  
+  /* --- Education, Skills, Achievements, and Contact Section --- */
+  /* (Your existing styles for these sections remain unchanged, except that they now use the .section class for tab behavior.) */
+  
+  /* Contact Section - Premium Style (see previous premium enhancement) */
+  #contact {
+    background: var(--light-bg);
+    text-align: center;
+  }
+  
+  #contact h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+  }
+  
+  .contact-details {
+    display: inline-block;
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-details p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+  }
+  
+  .contact-details a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+  }
+  
+  .contact-details a:hover,
+  .contact-details a:focus {
+    color: #3500b3;
+  }
+  
+  body.dark-mode #contact {
+    background: var(--dark-bg);
+    color: var(--light-text);
+  }
+  
+  body.dark-mode .contact-details {
+    background: #1c1c1c;
+    border-color: #444;
+    box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+  }
+  
+  body.dark-mode .contact-details a {
+    color: var(--primary-color);
+  }
+  
+  body.dark-mode .contact-details a:hover,
+  body.dark-mode .contact-details a:focus {
+    color: #b3a1ff;
+  }
+  
+  /* --- Footer --- */
+  /* (Footer styles remain as before) */
+  
+  /* --- Responsive Styles --- */
+  /* (Keep your responsive rules for nav-links, etc.) */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 70px;
+      right: 0;
+      background: var(--light-bg);
+      width: 200px;
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+      padding: 20px 0;
+      z-index: 999;
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  
+    .nav-links li {
+      margin: 10px 0;
+      text-align: center;
+    }
+  
+    .nav-toggle {
+      display: block;
+    }
+  }
+  

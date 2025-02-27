@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Animated Logo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        /* height: 100vh; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+      }
+
+      .logo-container {
+        width: 100%;
+        max-width: 600px; /* Prevents stretching on large screens */
+        height: auto;
+      }
+
+      svg {
+        width: 100%;
+        height: auto;
+      }
+
+      text {
+        fill: none;
+        stroke: #4c00ff;
+        stroke-width: 2.5; /* Increased stroke for ultra clarity */
+        stroke-dasharray: 400 50;
+        animation: dash 3s linear infinite;
+        font-size: 60px; /* Slightly larger text */
+        font-family: "Orbitron", sans-serif;
+        /* Ultra glow effect */
+        filter: drop-shadow(0 0 8px #4c00ff) 
+                drop-shadow(0 0 16px #4c00ff) 
+                drop-shadow(0 0 32px #4c00ff);
+      }
+
+      @keyframes dash {
+        from {
+          stroke-dashoffset: 0;
+        }
+        to {
+          stroke-dashoffset: -450;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logo-container">
+      <svg viewBox="0 0 600 200"> <!-- Increased width for perfect spacing -->
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">AKASH SINGH</text>
+      </svg>
+    </div>
+  </body>
+</html>
